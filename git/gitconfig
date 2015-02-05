@@ -1,21 +1,17 @@
-[core]
-	editor = nano
-
+[user]
+	name = jokesterfr
+	email = main@jokester.fr
 [color]
-	branch      = true
-	diff        = true
-	interactive = true
-	status      = true
-
+	ui = 1
 [alias]
-	ch = checkout
-	co = commit
-	st = status
-	br = branch
-	gi = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
-
+	timeline = log --oneline --graph --decorate
+	u = "! git fetch --all --prune; git fetch --tag"
+	branches = "!gitbranch.pl"
+	retag = "!retag"
+	untag = "!untag"
+	todo = grep TODO
+	pull-all = "! for b in $(git for-each-ref refs/heads --format='%(refname)') ; do git checkout ${b#refs/heads/} ; git pull --ff-only ; done"
+[gui]
+	historybrowser = gitk
 [push]
-	default = simple
-
-[include]
-	path = .gitprivateconfig
+	default = matching

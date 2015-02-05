@@ -2,19 +2,21 @@
 # @author Clément Désiles <main@jokester.fr>
 # @date   2015-02-05
 # -----------------------------------------------------------------------------
-NAME        = git
-BIN_DIR     = $(HOME)/bin
-GIT_CONFIG  = $(HOME)/.gitconfig
+NAME        = promptastic
+INSTALL_DIR = $(HOME)/bin/promptastic
 LOCAL_DIR   = $(shell pwd)
 
 all: check install
 
-install:
-	cp $(LOCAL_DIR)/{retag,untag,gitbranch.pl} $(BIN_DIR)
-	cp $(LOCAL_DIR)/gitconfig $(GIT_CONFIG)
+install: $(INSTALL_DIR)
+	cp $(LOCAL_DIR)/config.py $(INSTALL_DIR)
 	@echo "> $(NAME) configured"
 
+$(INSTALL_DIR):
+	mkdir -p $(INSTALL_DIR)
+	git clone -q https://github.com/nimiq/promptastic.git $(INSTALL_DIR)
+
 # Dependency check
-check: perl-installed git-installed
-perl-installed: ; @which perl > /dev/null
+check: python-installed git-installed
+python-installed: ; @which python > /dev/null
 git-installed: ; @which git > /dev/null

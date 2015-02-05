@@ -1,0 +1,9 @@
+#!/bin/bash
+TAG=${1}
+echo "Going to retag ${TAG}"
+
+# Delete local tag
+git tag -d ${TAG}
+
+# Delete remote tag
+git push origin :refs/tags/${TAG}

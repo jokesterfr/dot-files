@@ -1,19 +1,13 @@
-# Variables
+# -----------------------------------------------------------------------------
+# @author Clément Désiles <main@jokester.fr>
+# @date   2015-02-05
+# -----------------------------------------------------------------------------
+NAME        = bash
+BASH_CONFIG = $(HOME)/.bashrc
+LOCAL_DIR   = $(shell pwd)
 
-TOOL         = Bash
-LOCAL_CONFIG = $(HOME)/.bashrc
-THIS_CONFIG  = $(shell pwd)/bashrc
+all: install
 
-# Actions
-
-all: setup
-
-get_info:
-	@ echo "> $(TOOL)"
-	@ echo "Make your $(TOOL) local config a symlink to this config"
-	@ echo "LOCAL_CONFIG = $(LOCAL_CONFIG)"
-	@ echo "THIS_CONFIG  = $(THIS_CONFIG)"
-
-setup: get_info
-	@ ln -i -s $(THIS_CONFIG) $(LOCAL_CONFIG)
-
+install:
+	cp $(LOCAL_DIR)/bashrc $(BASH_CONFIG)
+	@echo "> $(NAME) configured"

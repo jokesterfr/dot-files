@@ -1,59 +1,70 @@
-## Exports ##
+#
+# ~/.bashrc
+#
 
-export BASH_DIR='/home/nausor'
-export GREP_COLOR=31
-export VDL_PATH='~/videos/downloaded/%(title)s.%(ext)s'
-export WINEPREFIX='~/.wine'
-export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
-
-if [[ $UID -eq 0 ]]; then
-	export PS1=" \[\e[01;31m\]#\[\e[0m\] "
-else
-	export PS1=" \[\e[01;32m\]\$\[\e[0m\] "
-fi
-export PS2=">"
-export PS3=">"
-export PS4="+"
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 
-## Options ##
+# Prompt
+# ------
 
-unset HISTFILE
+PS1='[\u@\h \W]\$ '
 
+# Prompstatic
+function _update_ps1() { export PS1="$(~/bin/promptastic/promptastic.py $?)"; }
+export PROMPT_COMMAND="_update_ps1 $PROMPT_COMMAND"
 
-## Aliases ##
+# Custom methods
+# --------------
 
-alias grep='grep --color=auto'
+pause() {
+        if $(killall -STOP "$1"); then
+                echo "[+] $1 successfully paused!"
+        else
+                echo "[-] Failed to pause $1"
+        fi
+}
 
-alias rm='rm -I'
-alias mv='mv -i'
+unpause() {
+        if $(killall -CONT "$1"); then
+                echo "[+] $1 successfully unpaused!"
+        else
+                echo "[-] Failed to unpause $1"
+        fi
+}
 
+extract () {
+    if [ -f $1 ] ; then
+      case $1 in
+        *.tar.bz2)   tar xjf $1     ;;
+        *.tar.gz)    tar xzf $1     ;;
+        *.bz2)       bunzip2 $1     ;;
+        *.rar)       unrar e $1     ;;
+        *.gz)        gunzip $1      ;;
+        *.tar)       tar xf $1      ;;
+        *.tbz2)      tar xjf $1     ;;
+        *.tgz)       tar xzf $1     ;;
+        *.zip)       unzip $1       ;;
+        *.Z)         uncompress $1  ;;
+        *.7z)        7z x $1        ;;
+        *)     echo "'$1' cannot be extracted via extract()" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
+
+# Aliases
+# -------
+alias fl="sudo su -c 'forever list'"
+alias gitu="git u"
+
+# ls aliases
 alias ls='ls --color=auto'
-alias l='ls'
-alias ll='ls -lh'
+alias ll='ls -alF'
 alias la='ls -A'
-alias lla='ls -lhA'
+alias l='ls -CF'
 
-alias mkdir='mkdir -p'
-alias md='mkdir'
-alias rd='rmdir'
-alias df='df -h'
-
-alias session='echo "$USER at $HOSTNAME"'
-alias s='session'
-alias d='date'
-alias p='pwd'
-alias h='history'
-alias e='emacs -nw'
-
-alias sf='php app/console'
-
-alias vdl='youtube-dl -o $VDL_PATH'
-
-alias bépo='setxkbmap fr'
-alias azer='setxkbmap fr bepo-dev'
-
-## Imports ##
-
-# TODO
-
+# alias for pretty json
+alias json='python -m json.tool'
