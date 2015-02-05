@@ -8,6 +8,8 @@ This is a set of makefile scripts and configuration files to bootstrap my Linux 
 
 * bash
 * git
+* fonts
+	- [Source Code Pro](https://github.com/adobe-fonts/source-code-pro), tweaked with [powerline symbols](https://github.com/powerline/fonts/tree/master/SourceCodePro)
 * [prompstatic](https://github.com/nimiq/promptastic)
 
 This project has been hugely inspired by previous works from [lepieru/myconfig
