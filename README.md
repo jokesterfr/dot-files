@@ -1,5 +1,5 @@
-myconfig
-========
+dot-files
+=========
 
 overview
 --------
@@ -18,8 +18,8 @@ installing
 
 Retrieve the project:
 
-    git clone https://github.com/jokesterfr/myconfig
-    cd myconfig
+    git clone https://github.com/jokesterfr/dot-files
+    cd dot-files
 
 Edit the files you need to
 
