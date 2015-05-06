@@ -16,5 +16,7 @@ install:
 
 # Dependency check
 check: perl-installed git-installed
+
 perl-installed: ; @which perl > /dev/null
+
 git-installed: ; @which git > /dev/null
