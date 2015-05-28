@@ -56,6 +56,14 @@ extract () {
      fi
 }
 
+function gdoc() {
+    google-chrome "https://cloud.google.com/$1/docs"
+}
+
+function gpricing() {
+    google-chrome "https://cloud.google.com/$1/pricing"
+}
+
 # Aliases
 # -------
 alias fl="sudo su -c 'forever list'"
@@ -69,3 +77,22 @@ alias l='ls -CF'
 
 # alias for pretty json
 alias json='python -m json.tool'
+
+# Autocompletion
+# --------------
+
+# The next line updates PATH for the Google Cloud SDK.
+source '~/bin/google-cloud-sdk/path.bash.inc'
+
+# The next line enables bash completion for gcloud.
+source '~/bin/google-cloud-sdk/completion.bash.inc'
+
+# Enable bash completion in interactive shells
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
