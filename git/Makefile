@@ -10,7 +10,9 @@ LOCAL_DIR   = $(shell pwd)
 all: check install
 
 install:
-	cp $(LOCAL_DIR)/{retag,untag,gitbranch.pl} $(BIN_DIR)
+	cp $(LOCAL_DIR)/retag $(BIN_DIR)
+	cp $(LOCAL_DIR)/untag $(BIN_DIR)
+	cp $(LOCAL_DIR)/gitbranch.pl $(BIN_DIR)
 	cp $(LOCAL_DIR)/gitconfig $(GIT_CONFIG)
 	@echo "> $(NAME) configured"
 
