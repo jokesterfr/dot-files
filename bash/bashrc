@@ -56,13 +56,10 @@ extract () {
      fi
 }
 
-function gdoc() {
-    google-chrome "https://cloud.google.com/$1/docs"
+meteo() {
+  curl wttr.in/$1
 }
 
-function gpricing() {
-    google-chrome "https://cloud.google.com/$1/pricing"
-}
 
 # Aliases
 # -------
