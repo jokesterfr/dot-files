@@ -16,10 +16,12 @@ all:
 			read -r -p " " confirm; \
 			if [ ! -z $$confirm ] ; then \
 				[ $$confirm = "y" ] || [ $$confirm = "Y" ] && (make -C $$each --quiet); \
+				echo ">" $${each%/} "configured"; \
 			else \
 				echo "> Skipped"; \
 			fi; \
 		else \
 			make -C $$each --quiet; \
+			echo ">" $${each%/} "configured"; \
 		fi; \
 	done

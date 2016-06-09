@@ -14,7 +14,6 @@ install:
 	cp $(LOCAL_DIR)/untag $(BIN_DIR)
 	cp $(LOCAL_DIR)/gitbranch.pl $(BIN_DIR)
 	cp $(LOCAL_DIR)/gitconfig $(GIT_CONFIG)
-	@echo "> $(NAME) configured"
 
 # Dependency check
 check: perl-installed git-installed
