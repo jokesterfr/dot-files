@@ -86,3 +86,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Path extension
+# --------------
+
+# Allow to execute node deps on a per-repo basis
+export PATH=./node_modules/.bin:$PATH
