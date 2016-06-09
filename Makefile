@@ -11,9 +11,13 @@ all:
 	for each in $(DIRS); do \
 		echo "===========[" $$n"/$(COUNT)" $${each%/} "]==========="; \
 		let "n+=1" ; \
-		echo -n "Override" $${each%/} "configuration? [y/N]"; \
-		read -r -p " " confirm; \
-		if [ ! -z $$confirm ] ; then \
-			[ $$confirm = "y" ] || [ $$confirm = "Y" ] && (make -C $$each --quiet) \
-		fi \
+		if [ -f $$each/.warn ] ; then \
+			echo -n "Override" $${each%/} "configuration? [y/N]"; \
+			read -r -p " " confirm; \
+			if [ ! -z $$confirm ] ; then \
+				[ $$confirm = "y" ] || [ $$confirm = "Y" ] && (make -C $$each --quiet) \
+			fi; \
+		else \
+			make -C $$each --quiet; \
+		fi; \
 	done
