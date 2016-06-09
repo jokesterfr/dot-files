@@ -15,7 +15,9 @@ all:
 			echo -n "Override" $${each%/} "configuration? [y/N]"; \
 			read -r -p " " confirm; \
 			if [ ! -z $$confirm ] ; then \
-				[ $$confirm = "y" ] || [ $$confirm = "Y" ] && (make -C $$each --quiet) \
+				[ $$confirm = "y" ] || [ $$confirm = "Y" ] && (make -C $$each --quiet); \
+			else \
+				echo "> Skipped"; \
 			fi; \
 		else \
 			make -C $$each --quiet; \
