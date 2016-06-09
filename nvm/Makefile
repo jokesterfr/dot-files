@@ -1,6 +1,7 @@
 # -----------------------------------------------------------------------------
 # @author Clément Désiles <main@jokester.fr>
 # @date   2016-06-09
+# @source https://github.com/creationix/nvm#manual-install
 # -----------------------------------------------------------------------------
 NAME        = nvm
 INSTALL_DIR = $(HOME)/.nvm
@@ -16,6 +17,7 @@ install: $(INSTALL_DIR)
 
 $(INSTALL_DIR):
 	git clone https://github.com/creationix/nvm.git ${INSTALL_DIR}
-	${INSTALL_DIR}~/.nvm
-	checkout `git describe --abbrev=0 --tags`
-	. ${INSTALL_DIR}/nvm.sh
+	@cd ${INSTALL_DIR} \
+	    && git checkout `git describe --abbrev=0 --tags` \
+	    && . ${INSTALL_DIR}/nvm.sh
+	@echo "> $(NAME) configured"
