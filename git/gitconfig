@@ -15,3 +15,5 @@
 	historybrowser = gitk
 [push]
 	default = matching
+[core]
+	excludesfile = ~/.gitignore
