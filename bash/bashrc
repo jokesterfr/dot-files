@@ -75,6 +75,11 @@ alias l='ls -CF'
 # alias for pretty json
 alias json='python -m json.tool'
 
+# npm aliases
+alias n='npm'
+alias nr='npm run'
+alias nrun='npm run'
+
 # Autocompletion
 # --------------
 

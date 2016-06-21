@@ -8,11 +8,13 @@ LOCAL_DIR   = $(shell pwd)
 
 all: check install
 
-install:
-	mkdir -p $(FONTS_DIR)
-	cp SourceCodePro/*.otf $(FONTS_DIR)
+install: source_code_pro
 	fc-cache -f $(FONTS_DIR)
-	@echo "> $(NAME) configured"
+
+source_code_pro: $(FONTS_DIR)/Sauce\ Code\ Powerline\ Regular.otf
+
+$(FONTS_DIR): ; mkdir -p $(FONTS_DIR)
+$(FONTS_DIR)/Sauce\ Code\ Powerline\ Regular.otf: $(FONTS_DIR); cp SourceCodePro/*.otf $(FONTS_DIR)
 
 check: git-installed
 git-installed: ; @which git > /dev/null

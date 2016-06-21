@@ -10,7 +10,6 @@ all: check install
 
 install: $(INSTALL_DIR)
 	cp $(LOCAL_DIR)/config.py $(INSTALL_DIR)
-	@echo "> $(NAME) configured"
 
 $(INSTALL_DIR):
 	mkdir -p $(INSTALL_DIR)

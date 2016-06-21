@@ -10,4 +10,3 @@ all: install
 
 install:
 	cp $(LOCAL_DIR)/bashrc $(BASH_CONFIG)
-	@echo "> $(NAME) configured"

@@ -11,4 +11,3 @@ all: install
 install:
 	mkdir -p $(DCONF_DIR)
 	cp user $(DCONF_DIR)
-	@echo "> $(NAME) configured"
